@@ -7,9 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import ru.yandex.practikum.pages.MainPage;
 import ru.yandex.practikum.pages.OrderPage;
-
 import java.util.concurrent.TimeUnit;
-
+import ru.yandex.practikum.config.Config;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -20,8 +19,9 @@ public class BaseTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(Config.BASE_URL);
 
         mainPage = new MainPage(driver);
         orderPage = new OrderPage(driver);

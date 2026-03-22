@@ -126,11 +126,7 @@ public class OrderPage {
     }
 
     public boolean isOrderSuccessDisplayed() {
-        try {
-            return driver.findElement(successModalHeader).getText().contains("Заказ оформлен");
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
+        return driver.findElement(successModalHeader).getText().contains("Заказ оформлен");
     }
 
 }
